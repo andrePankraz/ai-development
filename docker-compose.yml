@@ -7,7 +7,7 @@ services:
       target: ${TARGET:-local}  # dev or local
     shm_size: '2gb'
     environment:
-    - MODEL_FOLDER=/opt/ai_development/models/
+    - MODELS_FOLDER=/opt/ai_development/models/
     stdin_open: true  # docker run -i
     tty: true         # docker run -t
     volumes:
@@ -15,7 +15,7 @@ services:
     networks:
     - app-tier
     ports:
-    - "8200:8200"
+      - 8200:8200
     deploy:
       resources:
         reservations:
@@ -24,8 +24,6 @@ services:
             capabilities: [gpu]
 networks:
   default:
-    driver: bridge
     driver_opts:
       com.docker.network.driver.mtu: 1450
   app-tier:
-    driver: bridge
