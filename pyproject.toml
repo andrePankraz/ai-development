@@ -1,13 +1,10 @@
-[build-system]
-requires = ["setuptools", "setuptools-scm"]
-
 [project]
 name = "ai_development"
 version = "0.0.1"
 authors = [
   { name="André Pankraz", email="andre@pankraz.de" },
 ]
-description = "A generic AI development blueprint project."
+description = "Generic AI development blueprint project"
 readme = "README.md"
 requires-python = ">=3.8"
 classifiers = [
@@ -15,23 +12,30 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
-dynamic = ["dependencies", "optional-dependencies.tests"]
+dependencies = [
+  'fastapi',
+  'transformers',
+  'uvicorn',
+]
 
-[tool.setuptools.dynamic]
-dependencies = {file = ["docker/python/requirements.txt"]}
-optional-dependencies.tests = {file = ["docker/python/requirements-dev.txt"]}
+[project.optional-dependencies]
+dev = [
+  'black',
+  'pytest',
+]
 
 [project.urls]
 "Homepage" = "https://github.com/andrePankraz/ai_development"
 "Bug Tracker" = "https://github.com/andrePankraz/ai_development/issues"
 
-[tool.autopep8]
-max_line_length = 120
-aggressive = 3
+[tool.black]
+line-length = 120
+target-version = ['py310']
 
 [tool.pytest.ini_options]
-minversion = "6.0"
+minversion = "7.0"
 addopts = "-ra -q -s --log-cli-level=DEBUG"
+pythonpath = "src/"
 testpaths = [
     "tests"
 ]

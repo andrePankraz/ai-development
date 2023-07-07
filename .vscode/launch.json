@@ -1,23 +1,23 @@
 {
     "version": "0.2.0",
     "configurations": [
-        
         {
             "name": "Python: FastAPI",
             "type": "python",
             "request": "launch",
             "module": "uvicorn",
-            "cwd": "${workspaceFolder}/ai_development",
             "args": [
-                "ai_development:app",
+                "ai_development.service:app",
                 "--reload",
+                "--reload-dir",
+                "src",
                 "--host",
                 "0.0.0.0",
                 "--port",
                 "8200"
             ],
             "jinja": true,
-            "justMyCode": true
+            "justMyCode": false
         },
         {
             "name": "Python: Aktuelle Datei",

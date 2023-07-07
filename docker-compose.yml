@@ -3,8 +3,8 @@ version: '3.8'
 services:
   python:
     build:
-      context: docker/python
-      target: ${TARGET:-local}  # dev or local
+      dockerfile: docker/python/Dockerfile
+      target: ${TARGET:-local} # dev or local
     shm_size: '2gb'
     environment:
     - MODELS_FOLDER=/opt/ai_development/models/
