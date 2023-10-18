@@ -37,8 +37,8 @@ Docker must have CUDA enabled (e.g. for WSL see https://docs.nvidia.com/cuda/wsl
     - Dev Containers
 - Attach VS Code to Docker Container
   - Attach to running containers... (Lower left edge in VS Code)
-    - select ubh-check-ocr-python-1
-  - Explorer Open folder -> /opt/ubh_check_ocr
+    - select ai_development-python-1
+  - Explorer Open folder -> /opt/ai_development
   - Install following Extensions (in Container)
     - Python
     - Docker
