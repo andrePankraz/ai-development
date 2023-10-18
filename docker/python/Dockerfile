@@ -1,7 +1,7 @@
 # This file was created by ]init[ AG 2023.
 #
-# see https://hub.docker.com/r/nvidia/cuda/tags?page=1&name=11.8.0-cudnn8-devel-ubuntu22.0
-FROM harbor.init.de/docker.io/nvidia/cuda:11.8.0-cudnn8-devel-ubuntu22.04 AS base
+# see https://hub.docker.com/r/nvidia/cuda/tags?page=1&name=cudnn8-devel-ubuntu22.0
+FROM nvidia/cuda:11.8.0-cudnn8-devel-ubuntu22.04 AS base
 VOLUME /tmp
 ARG DEBIAN_FRONTEND=noninteractive
 ENV DEB_PYTHON_INSTALL_LAYOUT=deb_system
@@ -23,5 +23,5 @@ RUN pip3 install --editable .[dev]
 
 FROM base AS local
 COPY LICENSE .
-RUN pip3 install --editable .
+RUN pip3 install .
 CMD ["uvicorn", "ai_development.service:app", "--host", "0.0.0.0", "--port", "8200"]

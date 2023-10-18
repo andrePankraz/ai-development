@@ -35,16 +35,18 @@ Docker must have CUDA enabled (e.g. for WSL see https://docs.nvidia.com/cuda/wsl
 - Install [VS Code](https://code.visualstudio.com/)
   - Install following Extensions
     - Dev Containers
-    - Docker
-    - Black Formatter
-    - Markdown All in One
 - Attach VS Code to Docker Container
   - Attach to running containers... (Lower left edge in VS Code)
-    - select ai_development-python-1
-  - Explorer Open folder -> /opt/ai_development
+    - select ubh-check-ocr-python-1
+  - Explorer Open folder -> /opt/ubh_check_ocr
+  - Install following Extensions (in Container)
+    - Python
+    - Docker
+    - autoDocstring
+    - Black Formatter
+    - Markdown All in One
+    - vscode-pdf
   - Run / Start Debug
-    - VS Code Extension Python will be installed the first time (Wait and another Start Debug)
-    - Select Python Interpreter
     - Use Launch Configuration Python:FastAPI (Under "Run & Debugging")
 - Go to URL: http://localhost:8200/
   - Will take some time at first start (models are downloaded, several GB)
