@@ -16,7 +16,7 @@ Docker must have CUDA enabled (e.g. for WSL see https://docs.nvidia.com/cuda/wsl
 - Clone git@github.com:andrePankraz/ai_development.git
     ```bash
     $ cd ai_development
-    $ docker compose up
+    $ docker compose up --build
     ```
   - Will take some time at first start (images & packages are downloaded, >10 GB)
   - Wait & check if up and running
@@ -28,7 +28,7 @@ Docker must have CUDA enabled (e.g. for WSL see https://docs.nvidia.com/cuda/wsl
 - Clone git@github.com:andrePankraz/ai_development.git
     ```bash
     $ cd ai_development
-    $ docker compose --env-file docker/.envs/dev.env up
+    $ docker compose --env-file dev.env up --build
     ```
   - Will take some time at first start (images & packages are downloaded, >10 GB)
   - Wait & check if up and running
@@ -39,13 +39,6 @@ Docker must have CUDA enabled (e.g. for WSL see https://docs.nvidia.com/cuda/wsl
   - Attach to running containers... (Lower left edge in VS Code)
     - select ai_development-python-1
   - Explorer Open folder -> /opt/ai_development
-  - Install following Extensions (in Container)
-    - Python
-    - Docker
-    - autoDocstring
-    - Black Formatter
-    - Markdown All in One
-    - vscode-pdf
   - Run / Start Debug
     - Use Launch Configuration Python:FastAPI (Under "Run & Debugging")
 - Go to URL: http://localhost:8200/

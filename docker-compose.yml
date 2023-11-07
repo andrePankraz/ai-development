@@ -3,25 +3,26 @@ version: '3.8'
 services:
   python:
     build:
-      dockerfile: docker/python/Dockerfile
+      dockerfile: Dockerfile
       target: ${TARGET:-local} # dev or local
     shm_size: '2gb'
     environment:
-    - MODELS_FOLDER=/opt/ai_development/models/
-    stdin_open: true  # docker run -i
-    tty: true         # docker run -t
+      - LOG_FILENAME=data/logs/logfile.log
+      - MODELS_FOLDER=data/models/
+    stdin_open: true # docker run -i
+    tty: true # docker run -t
     volumes:
-    - .:/opt/ai_development
+      - .:/opt/ai_development
     networks:
-    - app-tier
+      - app-tier
     ports:
       - 8200:8200
     deploy:
       resources:
         reservations:
           devices:
-          - driver: nvidia
-            capabilities: [gpu]
+            - driver: nvidia
+              capabilities: [ gpu ]
 networks:
   default:
     driver_opts:

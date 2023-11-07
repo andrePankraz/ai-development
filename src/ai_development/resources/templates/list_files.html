@@ -1,0 +1,25 @@
+<html>
+
+<head>
+    <title>Files</title>
+</head>
+
+<body>
+    {% if parent %}
+    <h1><a href="{{ parent }}">..</a></h1>
+    {% endif %}
+    <h1>Subdirectories:</h1>
+    <ul>
+        {% for subdir in subdirs %}
+        <li><a href="{{ subdir }}">{{ subdir.split('/')[-1] }}</a></li>
+        {% endfor %}
+    </ul>
+    <h1>Files:</h1>
+    <ul>
+        {% for file in files %}
+        <li><a href="{{ file }}">{{ file.split('/')[-1] }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+
+</html>

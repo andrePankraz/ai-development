@@ -13,15 +13,17 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 dependencies = [
-  'fastapi',
-  'transformers',
-  'uvicorn',
+  "fastapi",
+  "jinja2",
+  "transformers",
+  "uvicorn",
 ]
 
 [project.optional-dependencies]
 dev = [
-  'black',
-  'pytest',
+  "black",
+  "httpx",
+  "pytest-asyncio",
 ]
 
 [project.urls]
@@ -30,7 +32,7 @@ dev = [
 
 [tool.black]
 line-length = 120
-target-version = ['py310']
+target-version = ["py310"]
 
 [tool.pytest.ini_options]
 minversion = "7.0"

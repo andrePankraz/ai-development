@@ -1,0 +1,10 @@
+{
+    "recommendations": [
+        "ms-python.python",
+        "ms-azuretools.vscode-docker",
+        "njpwerner.autodocstring",
+        "ms-python.black-formatter",
+        "yzhang.markdown-all-in-one",
+        "tomoki1207.pdf"
+    ]
+}
