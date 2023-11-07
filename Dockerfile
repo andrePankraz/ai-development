@@ -2,6 +2,7 @@
 #
 # see https://hub.docker.com/r/nvidia/cuda/tags?page=1&name=cudnn8-devel-ubuntu22.0
 FROM nvidia/cuda:11.8.0-cudnn8-devel-ubuntu22.04 AS base
+# FROM harbor.init.de/docker.io/nvidia/cuda:11.8.0-cudnn8-devel-ubuntu22.04 AS base
 
 ARG DEBIAN_FRONTEND=noninteractive
 ENV DEB_PYTHON_INSTALL_LAYOUT=deb_system
