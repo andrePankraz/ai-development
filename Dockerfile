@@ -12,7 +12,7 @@ RUN apt-get update && \
   ln -fs /usr/share/zoneinfo/Europe/Berlin /etc/localtime && \
   dpkg-reconfigure --frontend noninteractive tzdata && \
   apt-get install -y curl git python3-pip && \
-  python3 -m pip install --upgrade pip && \
+  python3 -m pip install --upgrade pip setuptools && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/*
 
