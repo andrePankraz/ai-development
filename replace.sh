@@ -1,5 +1,5 @@
-# Rename all "ai-development" from blueprint to TARGET_STRING_HYPHEN.
-# Rename all "ai_development" from blueprint to TARGET_STRING_UNDERSCORE.
+# Rename all "ai-development" from blueprint to TARGET_STRING_HYPHEN (Github and folders prefer hyphens).
+# Rename all "ai_development" from blueprint to TARGET_STRING_UNDERSCORE (Python prefers underscores).
 
 # Global variables
 TARGET_STRING_HYPHEN="my-project"

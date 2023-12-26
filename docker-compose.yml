@@ -5,10 +5,11 @@ services:
     build:
       dockerfile: Dockerfile
       target: ${TARGET:-local} # dev or local
-    shm_size: '2gb'
+    container_name: ai-development
     environment:
       - LOG_FILENAME=data/logs/logfile.log
-      - MODELS_FOLDER=data/models/
+      # - MODELS_FOLDER=data/models/
+      # - NVIDIA_VISIBLE_DEVICES=0
     stdin_open: true # docker run -i
     tty: true # docker run -t
     volumes:
@@ -17,6 +18,7 @@ services:
       - app-tier
     ports:
       - 8200:8200
+    ipc: host
     deploy:
       resources:
         reservations:
