@@ -16,7 +16,7 @@ services:
     networks:
       - app-tier
     ports:
-      - 8300:8200
+      - 8200:8200
     deploy:
       resources:
         reservations:
