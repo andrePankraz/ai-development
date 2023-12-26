@@ -1,7 +1,7 @@
 # See environment variables in file ".env"
 version: '3.8'
 services:
-  python:
+  ai-development:
     build:
       dockerfile: Dockerfile
       target: ${TARGET:-local} # dev or local
@@ -12,11 +12,11 @@ services:
     stdin_open: true # docker run -i
     tty: true # docker run -t
     volumes:
-      - .:/opt/ai_development
+      - .:/opt/ai-development
     networks:
       - app-tier
     ports:
-      - 8200:8200
+      - 8300:8200
     deploy:
       resources:
         reservations:

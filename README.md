@@ -13,10 +13,10 @@ Docker must have CUDA enabled (e.g. for WSL see https://docs.nvidia.com/cuda/wsl
 
 ## Start as local service with Test-UI
 
-- Clone git@github.com:andrePankraz/ai_development.git
+- Clone git@github.com:andrePankraz/ai-development.git
     ```bash
-    $ cd ai_development
-    $ docker compose up --build
+    $ cd ai-development
+    $ docker compose up
     ```
   - Will take some time at first start (images & packages are downloaded, >10 GB)
   - Wait & check if up and running
@@ -25,10 +25,10 @@ Docker must have CUDA enabled (e.g. for WSL see https://docs.nvidia.com/cuda/wsl
 
 ## Start for Development
 
-- Clone git@github.com:andrePankraz/ai_development.git
+- Clone git@github.com:andrePankraz/ai-development.git
     ```bash
-    $ cd ai_development
-    $ docker compose --env-file dev.env up --build
+    $ cd ai-development
+    $ docker compose --env-file dev.env up
     ```
   - Will take some time at first start (images & packages are downloaded, >10 GB)
   - Wait & check if up and running
@@ -37,8 +37,9 @@ Docker must have CUDA enabled (e.g. for WSL see https://docs.nvidia.com/cuda/wsl
     - Dev Containers
 - Attach VS Code to Docker Container
   - Attach to running containers... (Lower left edge in VS Code)
-    - select ai_development-python-1
-  - Explorer Open folder -> /opt/ai_development
+    - select ai-development-ai-development
+  - Explorer Open folder -> /opt/ai-development
+  - VS Code will autoinstall extensions: acknowledge and restart (takes some time)
   - Run / Start Debug
     - Use Launch Configuration Python:FastAPI (Under "Run & Debugging")
 - Go to URL: http://localhost:8200/

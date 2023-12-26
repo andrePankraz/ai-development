@@ -1,13 +1,16 @@
-# Rename all "ai_development" from blueprint to a target project name, e.g. "h2ki_service".
+# Rename all "ai-development" from blueprint to TARGET_STRING_HYPHEN.
+# Rename all "ai_development" from blueprint to TARGET_STRING_UNDERSCORE.
 
-# Global variable
-TARGET_STRING="h2ki_service"
+# Global variables
+TARGET_STRING_HYPHEN="my-project"
+TARGET_STRING_UNDERSCORE="my_project"
 
 # Function to recursively rename files and directories
 rename_recursive() {
   shopt -s dotglob # Include hidden files
   for file in "$1"/*; do
-    new_file="${file//ai_development/$TARGET_STRING}"
+    new_file="${file//ai-development/$TARGET_STRING_HYPHEN}"
+    new_file="${new_file//ai_development/$TARGET_STRING_UNDERSCORE}"
     if [ "$file" != "$new_file" ]; then
       mv "$file" "$new_file"
       file="$new_file"
@@ -17,7 +20,8 @@ rename_recursive() {
     else
       mime_type=$(file --mime-type -b "$file")
       if [[ $mime_type == text/* || "${file##*.}" == "json" ]]; then
-        sed -i "s/ai_development/$TARGET_STRING/g" "$file"
+        sed -i "s/ai-development/$TARGET_STRING_HYPHEN/g" "$file"
+        sed -i "s/ai_development/$TARGET_STRING_UNDERSCORE/g" "$file"
       fi
     fi
   done

@@ -27,8 +27,8 @@ dev = [
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/andrePankraz/ai_development"
-"Bug Tracker" = "https://github.com/andrePankraz/ai_development/issues"
+"Homepage" = "https://github.com/andrePankraz/ai-development"
+"Bug Tracker" = "https://github.com/andrePankraz/ai-development/issues"
 
 [tool.black]
 line-length = 120

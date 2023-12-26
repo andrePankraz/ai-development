@@ -3,6 +3,7 @@ This file was created by ]init[ AG 2023.
 
 Module for Generic AI Development Service.
 """
+from ai_development.data_model import HealthCheck
 from contextlib import asynccontextmanager
 from fastapi import FastAPI, HTTPException, Request, status
 from fastapi.responses import FileResponse, HTMLResponse
@@ -12,7 +13,6 @@ import logging
 import mimetypes
 import os
 from pathlib import Path
-from ai_development.data_model import HealthCheck
 
 logger = logging.getLogger(__name__)
 

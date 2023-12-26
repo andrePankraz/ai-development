@@ -17,7 +17,8 @@ def configure_logging():
     root_logger = logging.getLogger()
 
     if not root_logger.handlers:
-        root_logger.setLevel(logging.DEBUG)
+        root_logger.setLevel(logging.WARNING)
+        logging.getLogger(__name__).setLevel(logging.DEBUG)
 
         # Console handler
         console_handler = logging.StreamHandler(sys.stdout)
