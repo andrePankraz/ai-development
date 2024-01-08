@@ -37,9 +37,8 @@ EXPOSE 8200
 FROM base AS dev
 RUN pip3 install --editable .[dev]
 
-FROM base AS local
+FROM base AS run
 COPY LICENSE .
 RUN pip3 install .
-# VOLUME /opt/ai-development/data
 CMD ["uvicorn", "ai_development.service:app", "--host", "0.0.0.0", "--port", "8200", "--log-level", "warning"]
 HEALTHCHECK --interval=5s --timeout=5s --retries=5 CMD curl --include --request GET http://localhost:8200/health || exit 1

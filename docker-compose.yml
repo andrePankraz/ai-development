@@ -4,16 +4,19 @@ services:
   ai-development:
     build:
       dockerfile: Dockerfile
-      target: ${TARGET:-local} # dev or local
+      target: ${TARGET:-run} # dev or run
+    image: ai-development
     container_name: ai-development
     environment:
-      - LOG_FILENAME=data/logs/logfile.log
-      # - MODELS_FOLDER=data/models/
-      # - NVIDIA_VISIBLE_DEVICES=0
+      # See files .env (for run) and dev.env (for dev)
+      - TARGET=${TARGET}
+      - LOG_FILENAME=${LOG_FILENAME}
+      - NVIDIA_VISIBLE_DEVICES=${NVIDIA_VISIBLE_DEVICES}
     stdin_open: true # docker run -i
     tty: true # docker run -t
     volumes:
       - .:/opt/ai-development
+      - /mnt/sda/huggingface:/root/.cache/huggingface
     networks:
       - app-tier
     ports:

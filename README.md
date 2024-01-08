@@ -37,7 +37,7 @@ Docker must have CUDA enabled (e.g. for WSL see https://docs.nvidia.com/cuda/wsl
     - Dev Containers
 - Attach VS Code to Docker Container
   - Attach to running containers... (Lower left edge in VS Code)
-    - select ai-development-ai-development
+    - select /ai-development
   - Explorer Open folder -> /opt/ai-development
   - VS Code will autoinstall extensions: acknowledge and restart (takes some time)
   - Run / Start Debug

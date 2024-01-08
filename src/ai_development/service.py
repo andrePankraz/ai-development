@@ -9,10 +9,12 @@ from fastapi import FastAPI, HTTPException, Request, status
 from fastapi.responses import FileResponse, HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
+import gc
 import logging
 import mimetypes
 import os
 from pathlib import Path
+import torch
 
 logger = logging.getLogger(__name__)
 
@@ -23,7 +25,9 @@ app = FastAPI(root_path=os.getenv("BASE_PATH", "/"))
 
 
 async def shutdown():
-    """Shutdown the ProcessPoolExecutor."""
+    if torch.cuda.is_available():
+        torch.cuda.empty_cache()
+        torch.cuda.ipc_collect()
 
 
 @asynccontextmanager
@@ -124,3 +128,12 @@ if LOG_FOLDER:
     @app.get("/logs{subpath:path}", response_class=HTMLResponse)
     def list_log_files(request: Request, subpath: str = ""):
         return list_files(request, "/logs", subpath, LOG_FOLDER)
+
+
+gc.collect()
+torch.cuda.empty_cache()
+
+if __name__ == "__main__":
+    import uvicorn
+
+    uvicorn.run(app, host="0.0.0.0", port=8200, workers=1)
