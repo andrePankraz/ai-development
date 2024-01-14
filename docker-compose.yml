@@ -7,6 +7,13 @@ services:
       target: ${TARGET:-run} # dev or run
     image: ai-development
     container_name: ai-development
+    # ipc: host
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           capabilities: [ gpu ]
     environment:
       # See files .env (for run) and dev.env (for dev)
       - TARGET=${TARGET}
@@ -21,13 +28,7 @@ services:
       - app-tier
     ports:
       - 8200:8200
-    ipc: host
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              capabilities: [ gpu ]
+
 networks:
   default:
     driver_opts:

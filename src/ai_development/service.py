@@ -21,8 +21,6 @@ logger = logging.getLogger(__name__)
 LOG_FILENAME = os.environ.get("LOG_FILENAME")
 LOG_FOLDER = Path(LOG_FILENAME).parent if LOG_FILENAME else None
 
-app = FastAPI(root_path=os.getenv("BASE_PATH", "/"))
-
 
 async def shutdown():
     if torch.cuda.is_available():
@@ -37,7 +35,6 @@ async def lifespan(app: FastAPI):
     # Serve static files
     app.mount("/", StaticFiles(directory="src/ai_development/resources/html", html=True), name="static")
 
-    # Start async background task for result sending
     if LOG_FOLDER:
         LOG_FOLDER.mkdir(parents=True, exist_ok=True)
 
@@ -48,7 +45,7 @@ async def lifespan(app: FastAPI):
     await shutdown()
 
 
-app = FastAPI(root_path=os.getenv("BASE_PATH", "/"), lifespan=lifespan)
+app = FastAPI(root_path=os.getenv("BASE_PATH", ""), lifespan=lifespan)
 templates = Jinja2Templates(directory="src/ai_development/resources/templates")
 
 

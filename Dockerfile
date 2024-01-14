@@ -8,8 +8,9 @@ ENV DEB_PYTHON_INSTALL_LAYOUT=deb_system
 RUN apt-get update && \
 	# Upgrade system
 	apt-get full-upgrade -y && \
-	# Local Timezone: Berlin
-	apt-get install -y tzdata && \
+	# Install locale and timezone data, set timezone Berlin
+	apt-get install -y locales tzdata && \
+	locale-gen de_DE.UTF-8 && \
 	ln -fs /usr/share/zoneinfo/Europe/Berlin /etc/localtime && \ 
 	dpkg-reconfigure --frontend noninteractive tzdata && \
 	# Curl, Git, Python & Pip
@@ -17,6 +18,10 @@ RUN apt-get update && \
 	# Cleanup
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/*
+
+# Set default locale de_DE.UTF-8
+ENV LANG de_DE.UTF-8
+ENV LC_ALL de_DE.UTF-8
 
 # Update Pip & install Poetry
 ENV POETRY_VIRTUALENVS_CREATE=false
