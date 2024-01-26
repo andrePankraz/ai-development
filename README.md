@@ -28,7 +28,7 @@ Docker must have CUDA enabled (e.g. for WSL see https://docs.nvidia.com/cuda/wsl
 - Clone git@github.com:andrePankraz/ai-development.git
     ```bash
     $ cd ai-development
-    $ docker compose --env-file dev.env up
+    $ TARGET=dev docker compose up
     ```
   - Will take some time at first start (images & packages are downloaded, >10 GB)
   - Wait & check if up and running

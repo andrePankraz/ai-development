@@ -40,9 +40,11 @@ COPY src ./src
 EXPOSE 8200
 
 FROM base AS dev
+ENV TARGET=dev
 RUN pip3 install --editable .[dev]
 
 FROM base AS run
+ENV TARGET=run
 COPY LICENSE .
 RUN pip3 install .
 CMD ["uvicorn", "ai_development.service:app", "--host", "0.0.0.0", "--port", "8200", "--log-level", "warning"]

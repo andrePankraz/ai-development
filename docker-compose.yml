@@ -14,11 +14,6 @@ services:
     #       devices:
     #         - driver: nvidia
     #           capabilities: [ gpu ]
-    environment:
-      # See files .env (for run) and dev.env (for dev)
-      - TARGET=${TARGET}
-      - LOG_FILENAME=${LOG_FILENAME}
-      - NVIDIA_VISIBLE_DEVICES=${NVIDIA_VISIBLE_DEVICES}
     stdin_open: true # docker run -i
     tty: true # docker run -t
     volumes:

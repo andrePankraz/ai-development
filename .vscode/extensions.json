@@ -1,10 +1,12 @@
 {
     "recommendations": [
-        "ms-python.python",
+        "george-alisson.html-preview-vscode",
         "ms-azuretools.vscode-docker",
-        "njpwerner.autodocstring",
+        "ms-python.python",
         "ms-python.black-formatter",
+        "njpwerner.autodocstring",
+        "tomoki1207.pdf",
         "yzhang.markdown-all-in-one",
-        "tomoki1207.pdf"
+        "ms-toolsai.jupyter",
     ]
 }
