@@ -4,7 +4,7 @@ services:
   ai-development:
     build:
       dockerfile: Dockerfile
-      target: ${TARGET:-run} # dev or run
+      target: ${TARGET:-dev} # dev (Default) or run
     image: ai-development
     container_name: ai-development
     # ipc: host
@@ -19,8 +19,9 @@ services:
     volumes:
       - .:/opt/ai-development
       - /mnt/sda/huggingface:/root/.cache/huggingface
-    networks:
-      - app-tier
+    network_mode: host # Overrides all other network settings
+    # networks:
+    #   - app-tier
     ports:
       - 8200:8200
 

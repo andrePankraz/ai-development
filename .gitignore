@@ -129,7 +129,7 @@ dmypy.json
 .pyre/
 
 # Custom
+/.files/
+/private/
 /data/logs/
 /data/models/
-/private/
-/.files/

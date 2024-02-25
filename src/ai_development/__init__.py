@@ -3,11 +3,20 @@ This file was created by ]init[ AG 2023.
 
 Package for Generic AI Development.
 """
+
+from dotenv import load_dotenv
 import logging
 from logging.handlers import RotatingFileHandler
 import os
 from pathlib import Path
 import sys
+
+load_dotenv(dotenv_path=os.path.join(os.getcwd(), ".env"))  # Don't override
+if os.getenv("TARGET") == "dev":
+    load_dotenv(dotenv_path=os.path.join(os.getcwd(), ".env.dev"), override=True)
+api_keys_filename = os.getenv("API_KEYS_FILENAME")
+if api_keys_filename:
+    load_dotenv(dotenv_path=os.path.join(os.getcwd(), api_keys_filename), override=True)
 
 
 def configure_logging():
