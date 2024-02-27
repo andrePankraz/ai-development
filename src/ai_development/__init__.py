@@ -24,15 +24,18 @@ def configure_logging():
     Configure logging if no handlers are set.
     """
     root_logger = logging.getLogger()
-
-    if not root_logger.handlers:
-        root_logger.setLevel(logging.WARNING)
+    if not root_logger.hasHandlers() or not root_logger.handlers[0].name:
+        root_logger.setLevel(logging.INFO)
         logging.getLogger(__name__).setLevel(logging.DEBUG)
+
+        if root_logger.hasHandlers():
+            root_logger.removeHandler(root_logger.handlers[0])
 
         # Console handler
         console_handler = logging.StreamHandler(sys.stdout)
+        console_handler.name = "console"
         console_format = logging.Formatter(
-            "[%(asctime)s - %(levelname)s - %(filename)30s:%(lineno)4s - %(funcName)20s()] %(message)s"
+            "[%(asctime)s - %(levelname)s - %(name)30s:%(lineno)4s - %(funcName)20s()] %(message)s"
         )
         console_handler.setFormatter(console_format)
         root_logger.addHandler(console_handler)
@@ -44,7 +47,7 @@ def configure_logging():
             log_filepath.parent.mkdir(parents=True, exist_ok=True)
             file_handler = RotatingFileHandler(str(log_filepath), maxBytes=1000000, backupCount=10)
             file_format = logging.Formatter(
-                "[%(asctime)s - %(levelname)s - %(filename)30s:%(lineno)4s - %(funcName)20s()] %(message)s"
+                "[%(asctime)s - %(levelname)s - %(name)30s:%(lineno)4s - %(funcName)20s()] %(message)s"
             )
             file_handler.setFormatter(file_format)
             root_logger.addHandler(file_handler)

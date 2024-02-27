@@ -133,4 +133,18 @@ torch.cuda.empty_cache()
 if __name__ == "__main__":
     import uvicorn
 
-    uvicorn.run("ai_development.service:app", host="0.0.0.0", port=8200, reload=True, reload_dirs="src", workers=1)
+    uvicorn.run(
+        "ai_development.service:app",
+        host="0.0.0.0",
+        port=int(os.environ.get("PORT", "8200")),
+        reload=True,
+        reload_dirs="src",
+        workers=1,
+    )
+
+#########################################################################
+#
+# Custom Stuff...
+#
+#########################################################################
+

@@ -45,5 +45,8 @@ FROM base AS run
 ENV TARGET=run
 COPY .env LICENSE ./
 RUN pip3 install .
-CMD ["uvicorn", "ai_development.service:app", "--host", "0.0.0.0", "--port", "8200", "--log-level", "warning"]
-HEALTHCHECK --interval=5s --timeout=5s --retries=5 CMD curl --include --request GET http://localhost:8200/health || exit 1
+
+COPY start_services.sh .
+RUN chmod +x start_services.sh
+CMD ./start_services.sh
+HEALTHCHECK --interval=30s --timeout=5s --retries=5 CMD curl --include --request GET http://localhost:8200/health || exit 1
