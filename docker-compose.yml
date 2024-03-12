@@ -5,7 +5,7 @@ services:
     build:
       dockerfile: Dockerfile
       target: ${TARGET:-dev} # dev (Default) or run
-    image: ai-development
+    image: ai-development:${TARGET:-dev}
     container_name: ai-development
     # ipc: host
     # deploy:
